@@ -22,41 +22,52 @@
 
 
 <script>
-
+//go through this document in your VSCode as well as the console in your browser. I added the console.logs so you can get a visual of what is going on here. 
 
 document.getElementById('submit').addEventListener('click', event => {
+
+  let box = document.getElementById('box')
+  box.innerHTML = ''
+
+//this is just clearing out the Box div so it doesn't keep appending stuff that it shouldn't. Don't worry about this right now 
+
 
 event.preventDefault()
 let stuff = document.getElementById('stuff').value
 //grabbing the value of the input from the document
+
 console.log(stuff, 'stuff, AKA our input value')
 
-let myStoredStuff = JSON.parse(localStorage.getItem('myStuff')) || []
+let myStoredArray = JSON.parse(localStorage.getItem('myStoredArray')) || []
 
-//grabbing our array from localStorage, setting it to the variable myStoredStuff. IF this array does not exist then we set it to an empty array. Also we make sure to JSON.parse it so that we can get a real array, not a fake 'string array'.
-
-
-console.log(myStoredStuff, 'myStoredStuff, AKA our array that we pulled from localStorage')
-
-myStoredStuff.push(stuff)
-//taking our value of the input, and pushing it to the array that we pulled down. This is just adding our stuff into our myStoredStuff
-
-console.log(myStoredStuff, 'myStoredStuff after we pushed stuff')
+//grabbing our array from localStorage, setting it to the variable myStoredArray. IF this array does not exist then we set it to an empty array. Also we make sure to JSON.parse it so that we can get a real array, not a fake 'string array'.
 
 
-localStorage.setItem('myStuff', JSON.stringify(myStoredStuff))
-//now we are taking the array that we pulled down, changed, and send it back to localStorage as myStuff. 
+console.log(myStoredArray, `myStoredArray, AKA our array that we pulled from localStorage. this should console log as an empty array on the first try since we didn't push anything into it yet.`)
+
+myStoredArray.push(stuff)
+//taking our value of the input, and pushing it to the array that we pulled down. This is just adding our stuff into our myStoredArray
+
+console.log(myStoredArray, 'myStoredArray after we pushed stuff')
 
 
-//here we are looping through the array that we pulled down and added an item to. 
-for (let i = 0; i < myStoredStuff.length; i++) {
-let box = document.getElementById('box')
+localStorage.setItem('myStoredArray', JSON.stringify(myStoredArray))
+//now we are taking the array that we pulled down, changed, and sending it back to localStorage as myStoredArray. 
+//localStorage takes in two parameters when you set an item: the name of the item, which is the string 'myStoredArray', and the item itself. In our case, the item itself is the stringified version of our updated array. 
+//Now it will show up in localStorage as a key-value pair:  ('myStoredArray': myStoredArray) 
+//Take a look in your local Storage to see what I am talking about. 
+
+
+//here we are looping through the array that we pulled down and added an item to. This will render our updated array to the page.
+for (let i = 0; i < myStoredArray.length; i++) {
+
 box.innerHTML += `
-  <li> ${myStoredStuff[i]} </li>
+  <li> ${myStoredArray[i]} </li>
 `
 }
 })
 
+//hopefully this helps with your localStorage. To clear out your localStorage go to your console and type localStorage.clear(). 
 
 
 </script>
