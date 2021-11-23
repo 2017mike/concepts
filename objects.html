@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="div">Go look in your console to see our object</div>
+  
+  <button id='appendObject'>Directly append an object</button>
+
+  <button id="appendAge">Append bigMike.age</button>
+
+  <button id="appendSwag">Append bigMike.swag</button>
+
+  <button id="appendStrengths">Append bigMike.strengths</button>
+
+  <button id="appendStrengths2">Append bigMike.strengths[0]</button>
+
+
+  <div id="box"></div>
+
+
+
+
+
+
+  <script>
+//Objects are very useful to us in JavaScript. They are a data type that look like this: 
+
+let bigMike = {
+  age: 28,
+  swag: 'unlimited',
+  strengths: ['really cool', 'has a tattoo', 'good listener'],
+}
+
+console.log(bigMike)
+
+// OBJECTS ARE MADE UP OF KEY-VALUE PAIRS!!!
+
+// as you can see, objects are made by placing KEY-VALUE pairs inside of a pair of curly brackets. In our example, the KEYS are age, swag, and strengths. Our VALUES are 28, 'unlimited', and ['really cool', 'has a tattoo', 'good listener'].
+
+//we can set our VALUES to be any type of data.
+
+//Now, in order to actually append parts of the object to the page, we need to go inside of the object and grab its VALUE by calling for the KEY. 
+
+//How do we call for the key????
+
+//with a . !!!!
+//AKA bigMike.age
+//bigMike.swag 
+//etc. etc.
+
+
+console.log(bigMike.age)
+console.log(bigMike.swag)
+console.log(bigMike.strengths)
+console.log(bigMike.weaknesses)
+
+//now go look in your console and see that I am speaking the truth
+
+//There are many uses for objects but for now I'm just going to append the values onto the page. Let's see what happens when we take the bigMike object and append it directly:
+
+
+document.getElementById('appendObject').addEventListener("click", event => {
+  document.getElementById('box').innerHTML = `${bigMike}`
+})
+
+//click the append object button. it just says object Object huh? That's because HTML doesn't like to append objects directly. We need to append the VALUES by calling for the KEYS. 
+
+  document.getElementById('appendAge').addEventListener("click", event => {
+    document.getElementById('box').innerHTML = `${bigMike.age}`
+  })
+//click the Append Age button now. 
+//it says 28 now huh? good stuff right??? 
+
+//let's do swag now 
+
+  document.getElementById('appendSwag').addEventListener("click", event => {
+      document.getElementById('box').innerHTML = `${bigMike.swag}`
+    })
+
+//yeahhh boii
+
+
+//Ok now onto strengths
+
+    document.getElementById('appendStrengths').addEventListener("click", event => {
+        document.getElementById('box').innerHTML = `${bigMike.strengths}`
+      })
+
+//as you can see, we can append the array. but normally you would grab the array by its index and append that instead. Like SO: 
+    document.getElementById('appendStrengths2').addEventListener("click", event => {
+          document.getElementById('box').innerHTML = `${bigMike.strengths[0]}`
+      })
+
+//ok that's enough for objects for now. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

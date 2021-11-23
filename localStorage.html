@@ -32,7 +32,8 @@ document.getElementById('submit').addEventListener('click', event => {
 //this is just clearing out the Box div so it doesn't keep appending stuff that it shouldn't. Don't worry about this right now 
 
 
-event.preventDefault()
+event.preventDefault() //always event.preventDefault buttons inside of forms. 
+
 let stuff = document.getElementById('stuff').value
 //grabbing the value of the input from the document
 
@@ -56,6 +57,9 @@ localStorage.setItem('myStoredArray', JSON.stringify(myStoredArray))
 //localStorage takes in two parameters when you set an item: the name of the item, which is the string 'myStoredArray', and the item itself. In our case, the item itself is the stringified version of our updated array. 
 //Now it will show up in localStorage as a key-value pair:  ('myStoredArray': myStoredArray) 
 //Take a look in your local Storage to see what I am talking about. 
+
+
+//to look at your localStorage, go to the Application tab inside of your developer tools. 
 
 
 //here we are looping through the array that we pulled down and added an item to. This will render our updated array to the page.
