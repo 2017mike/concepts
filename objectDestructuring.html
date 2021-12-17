@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .hidden {
+      display: none
+    }
+  </style>
+</head>
+<body>
+
+  <div id="pageOne">
+
+  <h1>Object Destructuring</h1>
+  OK, so let's say we have an object called bigMike. It will look like this:
+<br>
+let bigMike = <br> 
+
+  {  <br>
+  age: 28, <br>
+  swag: 'unlimited', <br>
+  strengths: ['really cool', 'has a tattoo', 'good listener'] <br>
+  }
+  <br>
+  <br>
+Well, if we wanted to go and set a variable to be equal to each value, we would have to do this: <br>
+<br>
+let age = bigMike.age <br>
+let swag = bigMike.swag <br>
+let strengths = bigMike.strengths <br>
+<br>
+
+But that's the old, boring way to do it. It also takes more lines of code and isn't all that convenient.
+
+<br>
+
+<br>
+
+
+
+With object destructuring, we can set new variables to be equal to any value within the key value pairs by saying this: <br>
+<br>
+
+let { age, swag, strengths } = bigMike <br>
+
+<br>
+
+We now have a variable called age equal to 28, 
+<br> a variable called swag equal to unlimited,
+<br> and a variable called
+strengths equal to ['really cool', 'has a tattoo', 'good listener']. <br>
+<br>
+
+
+
+Although it looks like we are setting up our bigMike object to be something different, we're actually not. if you console log your object after destructuring it, it will look the same. 
+
+<br>
+
+<br>
+
+
+
+Go check the Javascript and your console log on this file to see this example played out. <br>
+
+<br>
+
+Once you're done, press the next button for page 2 <br>
+<br>
+Don't skip the console logs and JavaScript it doesn't take that long!! <br>
+
+
+<button id="nextPage">Next page</button>
+
+</div>
+
+
+<div class="hidden" id="pageTwo">
+  <h1>Destructuring in .then statements/ forEach statements etc. </h1>
+
+<br>
+  <p>when we destructure in promise statements (ie, .then statements, for</p>
+
+
+</div>
+
+
+
+
+<script>
+
+//go through this document in your VSCode as well as the console in your browser. I added the console.logs so you can get a visual of what is going on here. 
+  
+
+  let bigMike = {
+    age: 28,
+    swag: 'unlimited',
+    strengths: ['really cool', 'has a tattoo', 'good listener']
+  }
+
+  console.log(bigMike, 'this is bigMike before we destructure it')
+
+  let { age, swag, strengths } = bigMike
+
+
+
+
+  console.log(age)
+  console.log(swag)
+  console.log(strengths)
+
+
+  console.log(bigMike, `this is bigMike after we destructured it. As you can see, it's the same as before`)
+
+
+  //ok here is the event listener for the next page button. you can click the button now in your HTML if you've gotten this far. 
+
+  document.getElementById('nextPage').addEventListener('click', event => {
+    document.getElementById('pageOne').classList.add('hidden')
+    document.getElementById("pageTwo").classList.remove('hidden')
+  })
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
