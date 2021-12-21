@@ -16,7 +16,13 @@
 
   <div id="pageOne">
 
+    
+
   <h1>Object Destructuring</h1>
+
+  <h3> Don't worry too much about the javascript and console logs in this one, I will put them but I'm going to try to
+    explain it in the HTML. </h3>
+
   OK, so let's say we have an object called bigMike. It will look like this:
 <br>
 let bigMike = <br> 
@@ -66,13 +72,12 @@ Although it looks like we are setting up our bigMike object to be something diff
 
 
 
-Go check the Javascript and your console log on this file to see this example played out. <br>
+check the Javascript and your console log on this file to see this example played out if you'd like. <br>
 
 <br>
 
 Once you're done, press the next button for page 2 <br>
 <br>
-Don't skip the console logs and JavaScript it doesn't take that long!! <br>
 
 
 <button id="nextPage">Next page</button>
@@ -81,17 +86,83 @@ Don't skip the console logs and JavaScript it doesn't take that long!! <br>
 
 
 <div class="hidden" id="pageTwo">
-  <h1>Destructuring in .then statements/ forEach statements etc. </h1>
+  <h1>Destructuring in .then statements, and some other objects </h1>
 
 <br>
-  <p>when we destructure in promise statements (ie, .then statements, for</p>
+  <p>So while the last example is useful it's probably not the most common way you will see destructuring. You can destructure any object including the the ones you would see after a .then statement. For this example let's use axios and query the pokemon api since we've done that before. </p>
+
+  <br>
+
+  <p>
+    Our axios request would normally look like this: 
+
+    <br>
+    axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+    <br>
+    <span style="background-color: lightcoral;">.then (res => {</span>
+      <br>
+    console.log(res.data)
+    <br>
+    let pokemon = res.data
+    <br>
+    })
+    <br>
+
+    <p>
+      Well, we know that res is an object with a KEY of data on it, and a bunch of stuff inside of that VALUE. If we just console logged res, it would look something like this: 
+
+      <br>
+      { <br>
+        data: a whole bunch of stuff <br>
+      } <br>
+
+      Since we know we only want the DATA key from the RES object, we can destructure our query to look like this: 
+
+      <br>
+      axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+      <br>
+      <span style="background-color: lightcoral;"> .then (({data}) => { </span>
+      <br>
+      console.log(data)
+      <br>
+      let pokemon = data
+      <br>
+      })
+      <br>
+      <br>
+    Maybe you are wondering, why the parentheses? Shouldn't it just look like this? 
+    <br>
+    <br>
+    axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+    <br>
+    <span style = "background-color: lightcoral;">.then ({data} => { </span>  
+      <br>
+    </p>
+    well, this is just one of those weird javascript syntax things. this just happens to be the way it's written. 
+  </p>
+<br>
+Ok, one last thing here. 
+<br>
+<br>
+we can actually use a colon after the object we destructured to rename it. So, so far we have taken ONLY the data KEY and VALUE from res, but it is still called data. What we can do here is this: 
+<br>
+axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+<br>
+<span style="background-color: lightcoral;">.then (({data: pokemon}) => { </span>
+<br>
+We now have a variable called pokemon that is equal to res.data.
+<br>
+Hopefully this helped you out a bit on object destructuring, you can always reach out to me if you have any more questions. :)
+  <p>
+
+  </p>
 
 
 </div>
 
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
 <script>
 
 //go through this document in your VSCode as well as the console in your browser. I added the console.logs so you can get a visual of what is going on here. 
@@ -123,7 +194,38 @@ Don't skip the console logs and JavaScript it doesn't take that long!! <br>
   document.getElementById('nextPage').addEventListener('click', event => {
     document.getElementById('pageOne').classList.add('hidden')
     document.getElementById("pageTwo").classList.remove('hidden')
+    console.clear()
   })
+
+
+
+  //PAGE 2
+
+  //pokemon api request
+
+  //this is our first, normal api request
+  axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+  .then (res => {
+    console.log(res.data)
+  })
+
+
+  //this is after we took res, and took just the key of data off of it. We should see the same thing console logged because we were console logging res.DATA before!
+  axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+      .then(({data}) => {
+        console.log(data)
+      })
+
+
+  //:pokemon is just renaming data to pokemon. So, instead of writing out let pokemon = res.data, we just took the data key-value and renamed it to pokemon. !!
+  axios.get('https://pokeapi.co/api/v2/pokemon/kangaskhan')
+      .then(({ data: pokemon }) => {
+        console.log(pokemon)
+      })
+
+  
+
+
 
 
 
